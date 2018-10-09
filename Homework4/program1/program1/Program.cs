@@ -38,11 +38,11 @@ namespace program1
         {
             TheClock aClock = new TheClock();
             Console.WriteLine("输入时间：");
-            Console.Write("时刻：");
+            Console.Write("时刻（0~23）：");
             int A = int.Parse(Console.ReadLine());
-            Console.Write("分钟：");
+            Console.Write("分钟（00~59）：");
             int B = int.Parse(Console.ReadLine());
-            Console.Write("秒钟：");
+            Console.Write("秒钟（00~59）：");
             int C = int.Parse(Console.ReadLine());
             aClock.AlarmClock += ShowAlarm;
             aClock.Alarm(A, B, C);

@@ -26,5 +26,10 @@ namespace Program2
             int c = a * b;
             this.textBox3.Text = c.ToString();
         }
+
+        private void textBox2_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

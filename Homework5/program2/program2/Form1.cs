@@ -58,8 +58,15 @@ namespace program2
 
         private void drawLine(double x0, double y0,double x1,double y1)
         {
-            Brush b = new SolidBrush(Color.Blue);
-            Pen pen = new Pen(b,11);
+            //通过随机数调整颜色
+            Random random =new Random();
+            int n1 =random.Next(256);
+            int n2 =random.Next(256);
+            int n3 =random.Next(256);
+            Color c =Color.FromArgb(n1,n2,n3);//可写三个参数也可以写四个参数，可以首项是透明度
+            //可以用brush（定义画笔）来调节代入pen函数当然直接调整color也可以~
+            //Brush b = new SolidBrush(Color.Blue);
+            Pen pen = new Pen(c,11);
             pen.Width = Convert.ToInt32(textBox5.Text);
             graphics.DrawLine(
                 pen, (float)x0, (float)y0, (float)x1, (float)y1

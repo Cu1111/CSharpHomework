@@ -9,8 +9,8 @@ namespace program1
 {
     public class OrderService
     {
-        private List<Order> orders = new List<Order>();
-        private Dictionary<int, Order> orderDic;//用DICTIONARY可以方便根据ID对订单进行管理
+        //private List<Order> orders = new List<Order>();
+        public Dictionary<int, Order> orderDic;//用DICTIONARY可以方便根据ID对订单进行管理
         public OrderService()
         {
             orderDic = new Dictionary<int, Order>();
@@ -31,17 +31,29 @@ namespace program1
         {
             orderDic.Remove(Id);
         }
-        //用LINQ语句按客户进行筛选
-        public void SearchOrderByCustomer(Customer customer)
+        public int Number()
         {
+            int n=0;
+            foreach(Order x in orderDic.Values)
+            {
+                n++;
+            }
+            return n;
+        }
+        //用LINQ语句按客户进行筛选
+        public List<Order> SearchOrderByCustomer(Customer customer)
+        {
+            List<Order> result = new List<Order>();
             var aimOrder = from n in orderDic.Values where n.Customer == customer select n;
             foreach(var n in aimOrder)
             {
+                result.Add(n);
                 Console.WriteLine(n.ToString());
             }
+            return result;
         }
         //按商品名称进行筛选
-        public void SearchOrderByGoods(Goods goods)
+        public List<Order> SearchOrderByGoods(Goods goods)
         {
             //LINQ语句 注意equal和contain的区别
             //var aimOrder = from n in orderDic.Values where n.Details.Exists(a=>a.Goods.Equals(goods)) select n;
@@ -60,10 +72,11 @@ namespace program1
             {
                 Console.WriteLine(n.ToString());
             }
+            return result;
         }
         //对订单价格进行的筛选
         //把金额大于Money的进行筛选
-        public void SearchOrderByMoney(int Money)
+        public List<Order> SearchOrderByMoney(int Money)
         {
             //LINQ语句
             //var aimOrder = from n in orderDic.Values where Order.MoneyOfOrder(n)>Money select n;
@@ -79,6 +92,7 @@ namespace program1
             {
                 Console.WriteLine(n.ToString());
             }
+            return result;
         }
         //注意每一个用到的都得加上无参的构造函数
         public void ExportToXml()

@@ -20,7 +20,7 @@ namespace program1
 
         public override string ToString()
         {
-            return $"GoodsId:{Id},GoodsName:{Name},GoodsValue{Value}";
+            return $"GoodsName:{Name},GoodsValue{Value}";
         }
     }
 }

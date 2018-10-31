@@ -10,78 +10,71 @@ using System.Windows.Forms;
 
 namespace program1
 {
-    public partial class Form2 : Form
+    public partial class Form5 : Form
     {
-        //为了实现两个表格数据互通
-        Form1 f1;
-        public Form2(Form1 f1)
+        Form2 f2;
+
+        public Form5(Form2 f2)
         {
             InitializeComponent();
-            this.f1 = f1;
+            this.f2 = f2;
             this.StartPosition = FormStartPosition.CenterScreen;
         }
+        Goods[] goods =
+       {
+            new Goods(1, "apple", 2),
+            new Goods(2, "banana", 3),
+            new Goods(3, "pear", 4)
+        };
 
-        public void showForm5()
-        {
-            Form5 f5 = new Form5(this);
-            f5.Show();
-        }
-
-        public Order order = new Order();
-
-        public Form2()
+        public Form5()
         {
             InitializeComponent();
         }
 
-        private void Form2_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void orderDetailsBindingSource_CurrentChanged(object sender, EventArgs e)
+        private void Form5_Load(object sender, EventArgs e)
         {
 
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if(textBox1.Text=="")
+            Goods good = new Goods();
+            OrderDetails orderDetails = new OrderDetails();
+            if(comboBox1.Text=="")
             {
-                MessageBox.Show("请输入订单号", "错误");
+                MessageBox.Show("请选择货物种类", "错误");
             }
             else
             {
-                order.Id = Convert.ToInt32(textBox1.Text);
-            }
-            if(f1.orders.Exists(a =>a.Id.Equals(order.Id)))
-            {
-                MessageBox.Show("此订单编号已存在！","错误");
-            }
-            else
-            {
-                if(textBox2.Text=="")
+                if (textBox1.Text == "")
                 {
-                    MessageBox.Show("请输入顾客名", "错误");
+                    MessageBox.Show("请输入货物数量", "错误");
                 }
                 else
                 {
-                    order.Customer = textBox2.Text;
-                    f1.orders.Add(order);
-                    var orders1 = from n in f1.orders
-                                  orderby n.Id
-                                  select n;
-                    f1.bindingSource1.DataSource = orders1;//对主界面订单列表的刷新
-                    this.Close();
+                    string a = comboBox1.Text;
+                    var n = from x in goods where x.Name == a select x;
+                    foreach (var m in n)
+                    {
+                        good = goods[m.Id - 1];
+                    }
+                    orderDetails.Goods = good;
+                    orderDetails.Number = Convert.ToInt32(textBox1.Text);
+                    f2.order.Details.Add(orderDetails);
+                    var b = from c in f2.order.Details
+                            select c;
+                    orderDetailsBindingSource.DataSource = b;
                 }
             }
-            
         }
-
 
         private void button2_Click(object sender, EventArgs e)
         {
-            showForm5();
+            var b = from c in f2.order.Details
+                    select c;
+            f2.orderDetailsBindingSource.DataSource = b;
+            this.Close();
         }
 
         private void textBox1_KeyPress(object sender, KeyPressEventArgs e)

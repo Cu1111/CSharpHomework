@@ -8,15 +8,34 @@ namespace program1
     [Serializable]
     public class Order
     {
-        public List<OrderDetails> Details = new List<OrderDetails>();
-        public int Id { set; get; }
+        private List<OrderDetails> details = new List<OrderDetails>();
+        public List<OrderDetails> Details
+        {
+            set { }
+            get => this.details;
+        }
+        public long Id { set; get; }
         public string Customer { set; get; }
+        public long phoneNumber { set; get; }
         public Order() { }
-        public Order (int Id,string Customer)
+        //public string year { set; get; }
+        //public string month { set; get; }
+        //public string day { set; get; }
+        public Order (long Id,string Customer,long phoneNumber)
         {
             this.Id = Id;
             this.Customer = Customer;
+            this.phoneNumber = phoneNumber;
         }
+
+        public Order(Order order)
+        {
+            this.Id = order.Id;
+            this.Customer = order.Customer;
+            this.phoneNumber = order.phoneNumber;
+            this.details = order.details;//不能省略
+        }
+
         public void AddDetails(OrderDetails orderDetail)
         {
             //内容相同的订单通过改变订单号（orderdetail）而改变！
@@ -26,12 +45,13 @@ namespace program1
             //}
             //else
             //{
-                Details.Add(orderDetail);
+                details.Add(orderDetail);
             //}
         }
+        //已更改ORDERDETAILS的属性
         public void RemoveDetails(int orderdetailId)
         {
-           //etails.RemoveAll(d => d.Id == orderdetailId);
+            //details.RemoveAll(d => d.Id == orderDetailId);
         }
 
         public static double MoneyOfOrder(Order order)

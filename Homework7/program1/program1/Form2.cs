@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Text.RegularExpressions;
 
 namespace program1
 {
@@ -46,15 +47,17 @@ namespace program1
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if(textBox1.Text=="")
+            string pattern1 = "[0-9]{11}";
+            string a = comboBox1.Text + comboBox2.Text + comboBox3.Text + textBox1.Text;
+            if (Regex.IsMatch(a,pattern1))
             {
-                MessageBox.Show("请输入订单号", "错误");
+                order.Id = Convert.ToInt64(a);
             }
             else
             {
-                order.Id = Convert.ToInt32(textBox1.Text);
+                MessageBox.Show("请输入正确格式订单号", "错误");
             }
-            if(f1.orders.Exists(a =>a.Id.Equals(order.Id)))
+            if(f1.orders.Exists(b =>b.Id.Equals(order.Id)))
             {
                 MessageBox.Show("此订单编号已存在！","错误");
             }
@@ -62,17 +65,25 @@ namespace program1
             {
                 if(textBox2.Text=="")
                 {
-                    MessageBox.Show("请输入顾客名", "错误");
+                    MessageBox.Show("顾客名不允许为空！", "错误");
                 }
                 else
                 {
-                    order.Customer = textBox2.Text;
-                    f1.orders.Add(order);
-                    var orders1 = from n in f1.orders
-                                  orderby n.Id
-                                  select n;
-                    f1.bindingSource1.DataSource = orders1;//对主界面订单列表的刷新
-                    this.Close();
+                    if(Regex.IsMatch(textBox3.Text,pattern1))
+                    {
+                        order.Customer = textBox2.Text;
+                        order.phoneNumber = Convert.ToInt64(textBox3.Text);
+                        f1.orders.Add(order);
+                        var orders1 = from n in f1.orders
+                                      orderby n.Id
+                                      select n;
+                        f1.bindingSource1.DataSource = orders1;//对主界面订单列表的刷新
+                        this.Close();
+                    }
+                    else
+                    {
+                        MessageBox.Show("请输入正确格式中国大陆电话号码！", "错误");
+                    }
                 }
             }
             
@@ -104,6 +115,33 @@ namespace program1
                     e.Handled = true;
                 }
             }
+        }
+
+        private void textBox3_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!Char.IsNumber(e.KeyChar) && !Char.IsPunctuation(e.KeyChar) && !Char.IsControl(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+            else if (Char.IsPunctuation(e.KeyChar))
+            {
+                if (e.KeyChar == '.')
+                {
+                    if (((TextBox)sender).Text.LastIndexOf('.') != -1)
+                    {
+                        e.Handled = true;
+                    }
+                }
+                else
+                {
+                    e.Handled = true;
+                }
+            }
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

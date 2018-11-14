@@ -34,36 +34,37 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.删除ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.查看明细ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.修改此订单ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.添加订单ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.查看全部订单ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.导出为XMLToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.删除ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.修改此订单ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
-            this.contextMenuStrip2 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.刷新订单详情ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.bindingSource2 = new System.Windows.Forms.BindingSource(this.components);
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.bindingSource2 = new System.Windows.Forms.BindingSource(this.components);
+            this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
+            this.导出为HTMLToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.saveFileDialog2 = new System.Windows.Forms.SaveFileDialog();
             this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.goodsDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.numberDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.customerDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.phoneNumberDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1.SuspendLayout();
+            this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
-            this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
-            this.contextMenuStrip2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
             this.SuspendLayout();
@@ -98,7 +99,6 @@
             this.label4.TabIndex = 3;
             this.label4.Text = "说明：\r\n1.在order表格中右键可以对选中order进行：删除、查看订单详情\r\n和修改订单的操作。\r\n2.在菜单键中可以添加新订单和查看全部订单（用于筛选之后" +
     "）。";
-            this.label4.Click += new System.EventHandler(this.label4_Click);
             // 
             // label3
             // 
@@ -121,81 +121,6 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(180, 35);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(93, 21);
-            this.textBox1.TabIndex = 0;
-            // 
-            // dataGridView1
-            // 
-            this.dataGridView1.AutoGenerateColumns = false;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.idDataGridViewTextBoxColumn,
-            this.customerDataGridViewTextBoxColumn});
-            this.dataGridView1.ContextMenuStrip = this.contextMenuStrip1;
-            this.dataGridView1.DataSource = this.bindingSource1;
-            this.dataGridView1.Location = new System.Drawing.Point(0, 67);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowTemplate.Height = 23;
-            this.dataGridView1.Size = new System.Drawing.Size(295, 346);
-            this.dataGridView1.TabIndex = 2;
-            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
-            // 
-            // contextMenuStrip1
-            // 
-            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.删除ToolStripMenuItem,
-            this.查看明细ToolStripMenuItem,
-            this.修改此订单ToolStripMenuItem});
-            this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(149, 70);
-            this.contextMenuStrip1.Opening += new System.ComponentModel.CancelEventHandler(this.contextMenuStrip1_Opening);
-            // 
-            // 删除ToolStripMenuItem
-            // 
-            this.删除ToolStripMenuItem.Name = "删除ToolStripMenuItem";
-            this.删除ToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
-            this.删除ToolStripMenuItem.Text = "删除";
-            this.删除ToolStripMenuItem.Click += new System.EventHandler(this.删除ToolStripMenuItem_Click);
-            // 
-            // 查看明细ToolStripMenuItem
-            // 
-            this.查看明细ToolStripMenuItem.Name = "查看明细ToolStripMenuItem";
-            this.查看明细ToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
-            this.查看明细ToolStripMenuItem.Text = "查看订单详情";
-            this.查看明细ToolStripMenuItem.Click += new System.EventHandler(this.查看明细ToolStripMenuItem_Click);
-            // 
-            // 修改此订单ToolStripMenuItem
-            // 
-            this.修改此订单ToolStripMenuItem.Name = "修改此订单ToolStripMenuItem";
-            this.修改此订单ToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
-            this.修改此订单ToolStripMenuItem.Text = "修改此订单";
-            this.修改此订单ToolStripMenuItem.Click += new System.EventHandler(this.修改此订单ToolStripMenuItem_Click);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(13, 426);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(65, 12);
-            this.label1.TabIndex = 3;
-            this.label1.Text = "订单编号：";
-            this.label1.Click += new System.EventHandler(this.订单_Click);
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bindingSource1, "Id", true));
-            this.label2.Location = new System.Drawing.Point(84, 426);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(35, 12);
-            this.label2.TabIndex = 4;
-            this.label2.Text = "（ ）";
-            this.label2.Click += new System.EventHandler(this.label2_Click);
-            // 
             // menuStrip1
             // 
             this.menuStrip1.Dock = System.Windows.Forms.DockStyle.None;
@@ -211,7 +136,9 @@
             // 
             this.toolStripMenuItem2.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.添加订单ToolStripMenuItem,
-            this.查看全部订单ToolStripMenuItem});
+            this.查看全部订单ToolStripMenuItem,
+            this.导出为XMLToolStripMenuItem,
+            this.导出为HTMLToolStripMenuItem});
             this.toolStripMenuItem2.Name = "toolStripMenuItem2";
             this.toolStripMenuItem2.Size = new System.Drawing.Size(44, 21);
             this.toolStripMenuItem2.Text = "菜单";
@@ -230,6 +157,77 @@
             this.查看全部订单ToolStripMenuItem.Text = "查看全部订单";
             this.查看全部订单ToolStripMenuItem.Click += new System.EventHandler(this.查看全部订单ToolStripMenuItem_Click);
             // 
+            // 导出为XMLToolStripMenuItem
+            // 
+            this.导出为XMLToolStripMenuItem.Name = "导出为XMLToolStripMenuItem";
+            this.导出为XMLToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
+            this.导出为XMLToolStripMenuItem.Text = "导出为XML";
+            this.导出为XMLToolStripMenuItem.Click += new System.EventHandler(this.导出为XMLToolStripMenuItem_Click);
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(180, 35);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(93, 21);
+            this.textBox1.TabIndex = 0;
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.AutoGenerateColumns = false;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.idDataGridViewTextBoxColumn,
+            this.customerDataGridViewTextBoxColumn,
+            this.phoneNumberDataGridViewTextBoxColumn});
+            this.dataGridView1.ContextMenuStrip = this.contextMenuStrip1;
+            this.dataGridView1.DataSource = this.bindingSource1;
+            this.dataGridView1.Location = new System.Drawing.Point(3, 67);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.RowTemplate.Height = 23;
+            this.dataGridView1.Size = new System.Drawing.Size(343, 346);
+            this.dataGridView1.TabIndex = 2;
+            // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.删除ToolStripMenuItem,
+            this.修改此订单ToolStripMenuItem});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(137, 48);
+            // 
+            // 删除ToolStripMenuItem
+            // 
+            this.删除ToolStripMenuItem.Name = "删除ToolStripMenuItem";
+            this.删除ToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
+            this.删除ToolStripMenuItem.Text = "删除";
+            this.删除ToolStripMenuItem.Click += new System.EventHandler(this.删除ToolStripMenuItem_Click);
+            // 
+            // 修改此订单ToolStripMenuItem
+            // 
+            this.修改此订单ToolStripMenuItem.Name = "修改此订单ToolStripMenuItem";
+            this.修改此订单ToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
+            this.修改此订单ToolStripMenuItem.Text = "修改此订单";
+            this.修改此订单ToolStripMenuItem.Click += new System.EventHandler(this.修改此订单ToolStripMenuItem_Click);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(13, 426);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(65, 12);
+            this.label1.TabIndex = 3;
+            this.label1.Text = "订单编号：";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bindingSource1, "Id", true));
+            this.label2.Location = new System.Drawing.Point(84, 426);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(35, 12);
+            this.label2.TabIndex = 4;
+            this.label2.Text = "（ ）";
+            // 
             // dataGridView2
             // 
             this.dataGridView2.AutoGenerateColumns = false;
@@ -237,27 +235,17 @@
             this.dataGridView2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.goodsDataGridViewTextBoxColumn,
             this.numberDataGridViewTextBoxColumn});
-            this.dataGridView2.ContextMenuStrip = this.contextMenuStrip2;
             this.dataGridView2.DataSource = this.bindingSource2;
-            this.dataGridView2.Location = new System.Drawing.Point(288, 67);
+            this.dataGridView2.Location = new System.Drawing.Point(345, 67);
             this.dataGridView2.Name = "dataGridView2";
             this.dataGridView2.RowTemplate.Height = 23;
-            this.dataGridView2.Size = new System.Drawing.Size(509, 346);
+            this.dataGridView2.Size = new System.Drawing.Size(455, 346);
             this.dataGridView2.TabIndex = 8;
             // 
-            // contextMenuStrip2
+            // bindingSource2
             // 
-            this.contextMenuStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.刷新订单详情ToolStripMenuItem});
-            this.contextMenuStrip2.Name = "contextMenuStrip2";
-            this.contextMenuStrip2.Size = new System.Drawing.Size(149, 26);
-            // 
-            // 刷新订单详情ToolStripMenuItem
-            // 
-            this.刷新订单详情ToolStripMenuItem.Name = "刷新订单详情ToolStripMenuItem";
-            this.刷新订单详情ToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
-            this.刷新订单详情ToolStripMenuItem.Text = "刷新订单详情";
-            this.刷新订单详情ToolStripMenuItem.Click += new System.EventHandler(this.刷新订单详情ToolStripMenuItem_Click);
+            this.bindingSource2.DataMember = "Details";
+            this.bindingSource2.DataSource = this.bindingSource1;
             // 
             // label5
             // 
@@ -278,46 +266,56 @@
             this.label6.TabIndex = 10;
             this.label6.Text = "（）";
             // 
-            // bindingSource2
+            // saveFileDialog1
             // 
-            this.bindingSource2.DataSource = typeof(program1.OrderDetails);
+            this.saveFileDialog1.Filter = "xml文件(*.xml)|*.xml";
+            // 
+            // 导出为HTMLToolStripMenuItem
+            // 
+            this.导出为HTMLToolStripMenuItem.Name = "导出为HTMLToolStripMenuItem";
+            this.导出为HTMLToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
+            this.导出为HTMLToolStripMenuItem.Text = "导出为HTML";
+            this.导出为HTMLToolStripMenuItem.Click += new System.EventHandler(this.导出为HTMLToolStripMenuItem_Click);
+            // 
+            // saveFileDialog2
+            // 
+            this.saveFileDialog2.Filter = "html文件(*.html)|*.html";
             // 
             // bindingSource1
             // 
             this.bindingSource1.DataSource = typeof(program1.Order);
-            this.bindingSource1.CurrentChanged += new System.EventHandler(this.bindingSource1_CurrentChanged);
             // 
             // goodsDataGridViewTextBoxColumn
             // 
             this.goodsDataGridViewTextBoxColumn.DataPropertyName = "Goods";
             this.goodsDataGridViewTextBoxColumn.HeaderText = "Goods";
             this.goodsDataGridViewTextBoxColumn.Name = "goodsDataGridViewTextBoxColumn";
-            this.goodsDataGridViewTextBoxColumn.ReadOnly = true;
-            this.goodsDataGridViewTextBoxColumn.Width = 260;
+            this.goodsDataGridViewTextBoxColumn.Width = 250;
             // 
             // numberDataGridViewTextBoxColumn
             // 
             this.numberDataGridViewTextBoxColumn.DataPropertyName = "Number";
             this.numberDataGridViewTextBoxColumn.HeaderText = "Number";
             this.numberDataGridViewTextBoxColumn.Name = "numberDataGridViewTextBoxColumn";
-            this.numberDataGridViewTextBoxColumn.ReadOnly = true;
-            this.numberDataGridViewTextBoxColumn.Width = 205;
+            this.numberDataGridViewTextBoxColumn.Width = 160;
             // 
             // idDataGridViewTextBoxColumn
             // 
             this.idDataGridViewTextBoxColumn.DataPropertyName = "Id";
             this.idDataGridViewTextBoxColumn.HeaderText = "Id";
             this.idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
-            this.idDataGridViewTextBoxColumn.ReadOnly = true;
-            this.idDataGridViewTextBoxColumn.Width = 95;
             // 
             // customerDataGridViewTextBoxColumn
             // 
             this.customerDataGridViewTextBoxColumn.DataPropertyName = "Customer";
             this.customerDataGridViewTextBoxColumn.HeaderText = "Customer";
             this.customerDataGridViewTextBoxColumn.Name = "customerDataGridViewTextBoxColumn";
-            this.customerDataGridViewTextBoxColumn.ReadOnly = true;
-            this.customerDataGridViewTextBoxColumn.Width = 150;
+            // 
+            // phoneNumberDataGridViewTextBoxColumn
+            // 
+            this.phoneNumberDataGridViewTextBoxColumn.DataPropertyName = "phoneNumber";
+            this.phoneNumberDataGridViewTextBoxColumn.HeaderText = "phoneNumber";
+            this.phoneNumberDataGridViewTextBoxColumn.Name = "phoneNumberDataGridViewTextBoxColumn";
             // 
             // Form1
             // 
@@ -338,12 +336,11 @@
             this.Text = "Cui\'s OrderService";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            this.contextMenuStrip1.ResumeLayout(false);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.contextMenuStrip1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
-            this.contextMenuStrip2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
             this.ResumeLayout(false);
@@ -364,25 +361,26 @@
         private System.Windows.Forms.ToolStripMenuItem 添加订单ToolStripMenuItem;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.ToolStripMenuItem 删除ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem 查看明细ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 查看全部订单ToolStripMenuItem;
         private System.Windows.Forms.DataGridView dataGridView2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn1;
         private System.Windows.Forms.Label label3;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
-        private System.Windows.Forms.BindingSource bindingSource2;
-        private System.Windows.Forms.ContextMenuStrip contextMenuStrip2;
-        private System.Windows.Forms.ToolStripMenuItem 刷新订单详情ToolStripMenuItem;
         private System.Windows.Forms.Label label4;
-        public System.Windows.Forms.BindingSource bindingSource1;
         private System.Windows.Forms.ToolStripMenuItem 修改此订单ToolStripMenuItem;
         public System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn customerDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn goodsDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn numberDataGridViewTextBoxColumn;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
+        public System.Windows.Forms.BindingSource bindingSource2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn customerDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn phoneNumberDataGridViewTextBoxColumn;
+        public System.Windows.Forms.BindingSource bindingSource1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn goodsDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn numberDataGridViewTextBoxColumn;
+        private System.Windows.Forms.ToolStripMenuItem 导出为XMLToolStripMenuItem;
+        private System.Windows.Forms.SaveFileDialog saveFileDialog1;
+        private System.Windows.Forms.ToolStripMenuItem 导出为HTMLToolStripMenuItem;
+        private System.Windows.Forms.SaveFileDialog saveFileDialog2;
     }
 }
 

@@ -17,14 +17,14 @@ namespace program1
         }
         public void AddOrder(Order order)
         {
-            if(orderDic.ContainsKey(order.Id))
+            if(orderDic.ContainsKey((int)order.Id))
             {
                 throw new Exception("此订单已经存在！");
             }
             else
             {
                 //orderDic.Add(order.Id, order);
-                orderDic[order.Id] = order;
+                orderDic[(int)order.Id] = order;
             }
         }
         public void RemoveOrder(int Id)
@@ -95,7 +95,7 @@ namespace program1
             return result;
         }
         //注意每一个用到的都得加上无参的构造函数
-        public void ExportToXml()
+        public void ExportToXml(string fileName)
         {
             List<Order> result = new List<Order>();
             foreach (Order n in orderDic.Values)
@@ -103,7 +103,7 @@ namespace program1
                 result.Add(n);
             }
             XmlSerializer xml = new XmlSerializer(typeof(List<Order>));
-            using (FileStream fs = new FileStream("fs.xml", FileMode.Create))
+            using (FileStream fs = new FileStream(fileName, FileMode.Create))
             {
                 xml.Serialize(fs, result);
             }
